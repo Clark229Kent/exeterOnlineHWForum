@@ -1,0 +1,39 @@
+body{
+    background-image: white;
+    /*background-image: linear-gradient(to bottom right, rgb(226, 19, 88), rgb(53, 7, 105))*/
+}
+
+table{
+    /*border-collapse: collapse;*/
+    border: 1px solid black;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+    min-height: 1000px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.10), 0px 10px 20px rgba(0,0,0,0.5);
+    width: 96%;
+}
+
+th,td {
+border: 1px solid;
+font-size: 30px;
+font-weight: normal;
+padding: 15px;
+text-align: left;
+color: black;
+border-bottom: 0.25px solid rgb(255,255,255,20);
+}
+
+td{
+    font-size: 12px;
+}
+
+#header{
+    background-image:linear-gradient(to right, rgb(148, 224, 196), rgb(143, 192, 189));
+}
+.blend{
+    background-image: white;
+    color:white;
+}
+.scrollable {
+    overflow-y: auto;
+}
