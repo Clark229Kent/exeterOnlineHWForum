@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="skeletonPageStylesNew.css">
+        <script src="skeletonPageFunctions.js"></script>
+    </head>
+
+<body>
+    <div class = "scrollable">
+        <table >
+            <tr> 
+                <td width = "12%">1</td>
+                <td width = "12%">2</td>
+                <td width = "12%">3</td>
+                <td width = "12%">4</td>
+                <td width = "12%">5</td>
+                <td width = "12%">6</td>
+                <td width = "12%">7</td>
+                <td width = "12%">8</td>
+            </tr>
+            <tr> 
+                <td colspan = 2 id = "bold">logo</td>
+                <td colspan = 3 id = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
+                    home (click here to go to home page)
+                </td>
+                <td colspan = 1 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">menu</button>
+                        <div class="dropdown-content">
+                            <a href="#">menu item 1</a>
+                            <a href="#">menu item 2</a>
+                            <a href="#">menu item 3</a>
+                            <a href="#">menu item 4</a>
+                        </div>
+                    </div>
+                </td>
+                <td colspan = 2 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">login</button>
+                        <div class="dropdown-content-login">
+                            <a><!--empty space here--></a>
+                            <center>
+                                <label for="inputUsername">Username:</label><br>
+                                <input type="text" id="inputUsername" name="inputUsername"><br>
+                                <a><!--empty space here--></a>       
+                                <label for="inputPassword">Password:</label><br>
+                                <input type="text" id="inputPassword" name="inputPassword"><br>  
+                            </center>
+                            <a href="#"><!--empty space here--></a>     
+                            <center>
+                                <button onclick = "submitLogin()" > Submit </button>
+                            </center> 
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan = 10 colspan = 2>left bar</td>
+                <td colspan = 2>
+                    <div class="dropdown">
+                        <button class="dropbtn">sort</button>
+                        <div class="dropdown-content">
+                            <a href="#">new</a>
+                            <a href="#">popular</a>
+                        </div>
+                    </div>
+                </td>
+                <td colspan = 2>empty</td>
+                <td rowspan = 32 colspan = 2>right bar</td>
+            </tr>
+            <!--one post shown for home page-->
+            <tr>
+                <td colspan = 4>
+                    <table><!--table for each post-->
+                        <td rowspan = 1 colspan = 1 >
+                            <center>
+                                <button onclick = "incrementVote()" > Upvote </button>
+                            </center> 
+                        </td>
+                        <td rowspan = 1 colspan = 1 >
+                            <input type="number" id="upvoteNumber" name="upvoteNumber" value="0"><br>  
+                        </td>
+                        <td rowspan = 1 colspan = 2 id = "forumtexttest" onclick="window.location.href='skeletonPostPage.html';">
+                            forum question (click here to go to post page)
+                        </td>
+                        <tr>
+                            <td rowspan = 1 colspan = 4>description</td>
+                        </tr>
+                        <tr>
+                            <td rowspan = 1 colspan = 4>tag list<!--button for link--></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan = 4>
+                    <table><!--table for each post-->
+                        <td rowspan = 1 colspan = 1 >
+                            <center>
+                                <button onclick = "incrementVote()" > Upvote </button>
+                            </center> 
+                        </td>
+                        <td rowspan = 1 colspan = 1 >
+                            <input type="number" id="upvoteNumber" name="upvoteNumber" value="0"><br>  
+                        </td>
+                        <td rowspan = 1 colspan = 2 onclick="window.location.href='skeletonPostPage.html';">
+                            forum question (click here to go to post page)
+                        </td>
+                        <tr>
+                            <td rowspan = 1 colspan = 4>description</td>
+                        </tr>
+                        <tr>
+                            <td rowspan = 1 colspan = 4>tag list<!--button for link--></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            
+          </table>
+    </div>
+    
+    </body>
+</html>
