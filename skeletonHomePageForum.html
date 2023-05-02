@@ -1,12 +1,12 @@
 <html>
     <head>
-        <link rel="stylesheet" href="skeletonPageStylesNew.css">
+        <link rel="stylesheet" href="skeletonCSS.css">
         <script src="skeletonPageFunctions.js"></script>
     </head>
 
 <body>
     <div class = "scrollable">
-        <table >
+        <table position = "absolute">
             <tr> 
                 <td width = "12%">1</td>
                 <td width = "12%">2</td>
@@ -19,8 +19,8 @@
             </tr>
             <tr> 
                 <td colspan = 2 id = "bold">logo</td>
-                <td colspan = 3 id = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
-                    home (click here to go to home page)
+                <td colspan = 3 id = "bold" onclick="window.location.href='skeletonSearchPage.html';">
+                    search (will be a search engine here, click here to go to search page)
                 </td>
                 <td colspan = 1 id = "bold">
                     <div class="dropdown">
@@ -37,16 +37,12 @@
                     <div class="dropdown">
                         <button class="dropbtn">login</button>
                         <div class="dropdown-content-login">
-                            <a><!--empty space here--></a>
                             <center>
+                                <br>
                                 <label for="inputUsername">Username:</label><br>
-                                <input type="text" id="inputUsername" name="inputUsername"><br>
-                                <a><!--empty space here--></a>       
+                                <input type="text" id="inputUsername" name="inputUsername"><br><br> 
                                 <label for="inputPassword">Password:</label><br>
-                                <input type="text" id="inputPassword" name="inputPassword"><br>  
-                            </center>
-                            <a href="#"><!--empty space here--></a>     
-                            <center>
+                                <input type="text" id="inputPassword" name="inputPassword"><br><br> 
                                 <button onclick = "submitLogin()" > Submit </button>
                             </center> 
                         </div>
@@ -70,48 +66,98 @@
             <!--one post shown for home page-->
             <tr>
                 <td colspan = 4>
-                    <table><!--table for each post-->
-                        <td rowspan = 1 colspan = 1 >
-                            <center>
-                                <button onclick = "incrementVote()" > Upvote </button>
-                            </center> 
-                        </td>
-                        <td rowspan = 1 colspan = 1 >
-                            <input type="number" id="upvoteNumber" name="upvoteNumber" value="0"><br>  
-                        </td>
-                        <td rowspan = 1 colspan = 2 id = "forumtexttest" onclick="window.location.href='skeletonPostPage.html';">
-                            forum question (click here to go to post page)
-                        </td>
-                        <tr>
-                            <td rowspan = 1 colspan = 4>description</td>
-                        </tr>
-                        <tr>
-                            <td rowspan = 1 colspan = 4>tag list<!--button for link--></td>
-                        </tr>
-                    </table>
+                    <div>
+                        <table position = "absolute"><!--table for each post-->
+                            <tr>
+                                <td rowspan = 1 colspan = 1>
+                                    <center>
+                                        <button onclick = "incrementVote(0)" > Upvote </button>
+                                    </center> 
+                                </td>
+                                <td colspan = 1>
+                                    <input class = "invis" type="number" type = "hidden" id="upvoteNumber0" name="upvoteNumber0" value="0"><br>  
+                                </td>
+                                <td colspan = 2 onclick="window.location.href='skeletonPostPage.html';">
+                                    forum question (click here to go to post page)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = 4>
+                                    <label for="postDescript0">
+                                        Post Description:<br>
+                                    </label><br>
+                                    <input class = "invis" type="text" id="postDescript0" name="postDescript0"><br> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = 4>
+                                    <div>
+                                        <table class = "forumPostTable" class = "scrollable">
+                                            <tr max-height = "30px"><!--these tags will populate depending on the actual post-->
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 1 (click any tag to go to tags page)</button>
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 2 </button>
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 3 </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td colspan = 4>
-                    <table><!--table for each post-->
-                        <td rowspan = 1 colspan = 1 >
-                            <center>
-                                <button onclick = "incrementVote()" > Upvote </button>
-                            </center> 
-                        </td>
-                        <td rowspan = 1 colspan = 1 >
-                            <input type="number" id="upvoteNumber" name="upvoteNumber" value="0"><br>  
-                        </td>
-                        <td rowspan = 1 colspan = 2 onclick="window.location.href='skeletonPostPage.html';">
-                            forum question (click here to go to post page)
-                        </td>
-                        <tr>
-                            <td rowspan = 1 colspan = 4>description</td>
-                        </tr>
-                        <tr>
-                            <td rowspan = 1 colspan = 4>tag list<!--button for link--></td>
-                        </tr>
-                    </table>
+                    <div>
+                        <table position = "absolute"><!--table for each post-->
+                            <tr>
+                                <td rowspan = 1 colspan = 1>
+                                    <center>
+                                        <button onclick = "incrementVote(1)" > Upvote </button>
+                                    </center> 
+                                </td>
+                                <td colspan = 1>
+                                    <input class = "invis" type="number" type = "hidden" id="upvoteNumber1" name="upvoteNumber1" value="0"><br>  
+                                </td>
+                                <td colspan = 2 onclick="window.location.href='skeletonPostPage.html';">
+                                    forum question (click here to go to post page)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = 4>
+                                    <label for="postDescript1">
+                                        Post Description:<br>
+                                    </label><br>
+                                    <input class = "invis" type="text" id="postDescript1" name="postDescript1"><br> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = 4>
+                                    <div>
+                                        <table class = "forumPostTable1" class = "scrollable">
+                                            <tr max-height = "30px"><!--these tags will populate depending on the actual post-->
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 1 </button>
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 2 </button>
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 3 </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
             

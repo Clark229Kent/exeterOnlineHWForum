@@ -9,9 +9,10 @@ function submitLogin(){
     //check if password corresponds to that username
 }
 
-function incrementVote(){
-  document.getElementById("forumtexttest").innerHTML = "test";
-  var upvotes = document.getElementById("upvoteNumber").value;
-  upvotes += 1;
-  document.getElementById("upvoteNumber").value = upvotes;
+function incrementVote(whichPost){
+  //if we have time we can work on making upvotes only clickable once, not high on priorities though.
+  var upvotes = document.getElementById("upvoteNumber" + String(whichPost)).value;
+  upvotes ++;
+  document.getElementById("upvoteNumber" + String(whichPost)).value = upvotes;
+  
 }
