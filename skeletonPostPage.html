@@ -17,11 +17,35 @@
             </tr>
             <tr> 
                 <td colspan = 2>logo</td>
-                <td colspan = 3 onclick="window.location.href='skeletonHomePageForum.html';">
+                <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
                     home (click here to go to home page)
                 </td>
-                <td colspan = 1>menu</td>
-                <td colspan = 2>login</td>
+                <td colspan = 1 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">menu</button>
+                        <div class="dropdown-content">
+                            <a href="#">menu item 1</a>
+                            <a href="#">menu item 2</a>
+                            <a href="#">menu item 3</a>
+                            <a href="#">menu item 4</a>
+                        </div>
+                    </div>
+                </td>
+                <td colspan = 2 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">login</button>
+                        <div class="dropdown-content-login">
+                            <center>
+                                <br>
+                                <label for="inputUsername">Username:</label><br>
+                                <input type="text" id="inputUsername" name="inputUsername"><br><br> 
+                                <label for="inputPassword">Password:</label><br>
+                                <input type="text" id="inputPassword" name="inputPassword"><br><br> 
+                                <button onclick = "submitLogin()" > Submit </button>
+                            </center> 
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td rowspan = 19 colspan = 2>left bar</td>

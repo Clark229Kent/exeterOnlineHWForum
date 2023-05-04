@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="skeletonCSS.css">
+    </head>
+<body>
+    <div class = "scrollable" height = 800px>
+        <table style = "width: 100%">
+            <tr> 
+                <td width = "12%">1</td>
+                <td width = "12%">2</td>
+                <td width = "12%">3</td>
+                <td width = "12%">4</td>
+                <td width = "12%">5</td>
+                <td width = "12%">6</td>
+                <td width = "12%">7</td>
+                <td width = "12%">8</td>
+            </tr>
+            <tr> 
+                <td colspan = 2>logo</td>
+                <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
+                    home (click here to go to home page)
+                </td>
+                <td colspan = 1 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">menu</button>
+                        <div class="dropdown-content">
+                            <a href="#">menu item 1</a>
+                            <a href="#">menu item 2</a>
+                            <a href="#">menu item 3</a>
+                            <a href="#">menu item 4</a>
+                        </div>
+                    </div>
+                </td>
+                <td colspan = 2 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">login</button>
+                        <div class="dropdown-content-login">
+                            <center>
+                                <br>
+                                <label for="inputUsername">Username:</label><br>
+                                <input type="text" id="inputUsername" name="inputUsername"><br><br> 
+                                <label for="inputPassword">Password:</label><br>
+                                <input type="text" id="inputPassword" name="inputPassword"><br><br> 
+                                <button onclick = "submitLogin()" > Submit </button>
+                            </center> 
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan = 19 colspan = 2>left bar</td>
+                <td rowspan = 2 colspan = 1>profile</td>
+                <td rowspan = 2 colspan = 2>course tag/other info</td>
+                <td rowspan = 2 colspan = 1>upvote</td>
+                <td rowspan = 1 colspan = 2>related</td>
+            </tr>
+
+          </table>
+    </div>
+    
+    </body>
+</html>

@@ -16,3 +16,21 @@ function incrementVote(whichPost){
   document.getElementById("upvoteNumber" + String(whichPost)).value = upvotes;
   
 }
+
+
+function addSearchTag(subject){
+  var newSearchText = document.getElementById("searchText").value
+  newSearchText += String("'" + subject + ",'");
+  document.getElementById("searchText").value = newSearchText;
+}
+
+function runSearch(e){if (e.keyCode == 13){
+  console.log("Enter key is pressed");
+  document.getElementById("searchEnterButton").click();
+  //this updates the search results page what was searched
+  var searchPrompt =  document.getElementById("searchText").value;
+  document.getElementById("actualSearchPrompt").value = searchPrompt;
+  console.log( document.getElementById("actualSearchPrompt").value);
+  //this resets the search textbox
+  document.getElementById("searchText").value = "";
+}}
