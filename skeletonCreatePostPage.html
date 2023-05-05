@@ -48,11 +48,30 @@
                 </td>
             </tr>
             <tr>
-                <td rowspan = 19 colspan = 2>left bar</td>
-                <td rowspan = 2 colspan = 1>profile</td>
-                <td rowspan = 2 colspan = 2>course tag/other info</td>
-                <td rowspan = 2 colspan = 1>upvote</td>
-                <td rowspan = 1 colspan = 2>related</td>
+                <td rowspan = 2 colspan = 2>left bar</td>
+                <td rowspan = 1 colspan = 4>
+                    <form action="addPost.php" method="post">
+                        <label for="forumSubjectText">Subject:</label><br>
+                        <input type="text" id="forumSubjectText" name="forumSubjectText"><br><br> 
+
+                        <label for="forumContentText">Content:</label><br>
+                        <input type="text" id="forumContentText" name="forumContentText"><br><br> 
+
+                        <label for="forumSubjectTag">Subject Tag:</label><br>
+                        <input type="text" id="forumSubjectTag" name="forumSubjectTag"><br><br> 
+
+                        <label for="forumCourseTag">Course Tag:</label><br>
+                        <input type="text" id="forumCourseTag" name="forumCourseTag"><br><br> 
+
+                        <label for="forumOther">Other:</label><br>
+                        <input type="text" id="forumOther" name="forumOther"><br><br> 
+
+                        <button onclick = "submitPost()" > Submit </button>
+                    </form>
+                    
+                    
+                </td>
+                <td rowspan = 2 colspan = 2>right bar</td>
             </tr>
 
           </table>
