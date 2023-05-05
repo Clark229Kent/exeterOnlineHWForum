@@ -88,11 +88,32 @@
                             <center>
                                 <br>
                                 <label for="inputUsername">Username:</label><br>
-                                <input type="text" id="inputUsername" name="inputUsername"><br><br> 
+                                <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
                                 <label for="inputPassword">Password:</label><br>
-                                <input type="text" id="inputPassword" name="inputPassword"><br><br> 
-                                <button onclick = "submitLogin()" > Submit </button>
-                            </center> 
+                                <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
+                                <button onclick="submitLogin()">Login</button>
+                                <label>
+                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                </label>
+                                <div id="inputmsg"></div>
+                            </div>
+                            </center>
+                            <script>
+                                function submitLogin() {
+                                  // Retrieve the input data
+                                  var username = document.getElementById("inputUsername").value;
+                                  var password = document.getElementById("inputPassword").value;
+                          
+                                  // Store the input data in Local Storage
+                                  localStorage.setItem("username", username);
+                                  localStorage.setItem("password", password);
+                          
+                                  // Display the input data on the page
+                                  var message = "User entered: Username - " + username + ", Password - " + password;
+                                  document.getElementById("inputmsg").innerHTML = message;
+                                }
+                              </script>
+                            
                         </div>
                     </div>
                 </td>
