@@ -50,21 +50,50 @@
             <tr>
                 <td rowspan = 2 colspan = 2>left bar</td>
                 <td rowspan = 1 colspan = 4>
-                    <form action="addPost.php" method="post">
-                        <label for="forumSubjectText">Subject:</label><br>
-                        <input type="text" id="forumSubjectText" name="forumSubjectText"><br><br> 
+                    <div>
+                        <form class="table" method="post" action="addPost.php">
+                            <span class="tr">
+                                <span class="td">
+                                    <label for="forumTitleText">Title:</label>
+                                    <input type="text" id="forumTitleText" name="forumTitleText"><br><br>
+                                </span>
+                            </span><br>
+                            <span class="tr">
+                                <span class="td">
+                                    <label for="forumContentText">Content:</label><br>
+                                    <input type="text" id="forumContentText" name="forumContentText"><br><br> 
+                                </span>
+                            </span><br>
+                            <span class="tr">
+                                <span class="td">
+                                    <label for="forumSubjectTag">Subject Tag:</label><br>
+                                    <input type="text" id="forumSubjectTag" name="forumSubjectTag"><br><br>  
+                                </span>
+                                <span class="td">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </span>
+                                <span class="td">
+                                    <label for="forumCourseTag">Course Tag:</label><br>
+                                    <input type="text" id="forumCourseTag" name="forumCourseTag"><br><br> 
+                                </span>
+                            </span><br>
+                            <span class="tr">
+                                <span class="td">
+                                    <label for="forumOther">Other:</label><br>
+                                    <input type="text" id="forumOther" name="forumOther"><br><br> 
+                                </span>
+                            </span>
+                        </form>
+                    </div>
+                         
 
-                        <label for="forumContentText">Content:</label><br>
-                        <input type="text" id="forumContentText" name="forumContentText"><br><br> 
+                        
 
-                        <label for="forumSubjectTag">Subject Tag:</label><br>
-                        <input type="text" id="forumSubjectTag" name="forumSubjectTag"><br><br> 
+                        
 
-                        <label for="forumCourseTag">Course Tag:</label><br>
-                        <input type="text" id="forumCourseTag" name="forumCourseTag"><br><br> 
+                        
 
-                        <label for="forumOther">Other:</label><br>
-                        <input type="text" id="forumOther" name="forumOther"><br><br> 
+                        
 
                         <button onclick = "submitPost()" > Submit </button>
                     </form>
