@@ -126,7 +126,6 @@ border-bottom: 0.25px solid rgb(255,255,255,20);
 }
 
 div {
-    text-align: center;
     margin: 0 auto;
 }
 
@@ -138,4 +137,38 @@ button.tagSearch {
     text-align: center;
     display: inline-block;
     font-size: 12px;
+}
+
+input[type = text].shadowed{
+    padding: 5px;
+    box-shadow:0 0 15px 1px rgba(0,0,0,0.06);
+    border-radius:10px;
+}
+
+textarea{
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px 
+}
+
+textarea.tags{
+    width: 30%;
+}
+
+button.submittable{
+    /* remove default behavior */
+    appearance:none;
+    -webkit-appearance:none;
+
+    /* usual styles */
+    padding:10px;
+    border:none;
+    background-color:#3F51B5;
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    width:100%;
 }

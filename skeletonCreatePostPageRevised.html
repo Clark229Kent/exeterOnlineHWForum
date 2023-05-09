@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="skeletonCSS.css">
+        <script src="skeletonPageFunctions.js"></script>
+    </head>
+<body>
+    <div class = "scrollable" height = 800px>
+        <table style = "width: 100%">
+            <tr> 
+                <td width = "12%">1</td>
+                <td width = "12%">2</td>
+                <td width = "12%">3</td>
+                <td width = "12%">4</td>
+                <td width = "12%">5</td>
+                <td width = "12%">6</td>
+                <td width = "12%">7</td>
+                <td width = "12%">8</td>
+            </tr>
+            <tr> 
+                <td colspan = 2>logo</td>
+                <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
+                    home (click here to go to home page)
+                </td>
+                <td colspan = 1 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">menu</button>
+                        <div class="dropdown-content">
+                            <a href="#">menu item 1</a>
+                            <a href="#">menu item 2</a>
+                            <a href="#">menu item 3</a>
+                            <a href="#">menu item 4</a>
+                        </div>
+                    </div>
+                </td>
+                <td colspan = 2 id = "bold">
+                    <div class="dropdown">
+                        <button class="dropbtn">login</button>
+                        <div class="dropdown-content-login">
+                            <center>
+                                <br>
+                                <label for="inputUsername">Username:</label><br>
+                                <input type="text" id="inputUsername" name="inputUsername"><br><br> 
+                                <label for="inputPassword">Password:</label><br>
+                                <input type="text" id="inputPassword" name="inputPassword"><br><br> 
+                                <button onclick = "submitLogin()" > Submit </button>
+                            </center> 
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan = 2 colspan = 2>left bar</td>
+                <td rowspan = 1 colspan = 4>
+                    <div>
+                        <form class="table" method="post" action="addPost.php">
+                            <span class="tr">
+                                <span class="td">
+                                    <textarea placeholder="Title:" id="forumTitleText" name="forumTitleText"></textarea><br><br>
+                                </span>
+                            </span><br>
+                            <span class="tr">
+                                <span class="td">
+                                    <textarea placeholder="What you're curious about:" id="forumContentText" name="forumContentText"></textarea><br><br>
+                                </span>
+                            </span><br>
+                            <span class="tr">
+                                <span class="td">
+                                    <textarea class = "tags" placeholder="Subject Tag:" id="forumSubjectTag" name="forumSubjectTag"></textarea>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea class = "tags" placeholder="Course Tag:" id="forumCourseTag" name="forumCourseTag"></textarea>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea class = "tags" placeholder="Other Tags:" id="forumOther" name="forumOther"></textarea>
+                                    <br><br>
+                                </span>
+                            </span><br>
+                        </form>
+                    </div>
+                         
+
+                        
+
+                        
+
+                        
+
+                        
+
+                        <button class = "submittable" id = "postSubmitButton" onclick = "submitPost()" > Submit </button>
+                    </form>
+                    
+                    
+                </td>
+                <td rowspan = 2 colspan = 2>right bar</td>
+            </tr>
+
+          </table>
+    </div>
+    
+    </body>
+</html>
