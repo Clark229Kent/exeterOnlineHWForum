@@ -25,6 +25,5 @@
     else{
         echo $conn->error;
     }
-    
-    $conn->close()
+    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonPostPage.html");
 ?>
