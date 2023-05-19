@@ -2,7 +2,7 @@
     $servername = '127.0.0.1:3306';
     $username = 'root';
     $password = '';
-    $dbname = 'login'; //has three columns: user_type (reg/mod), username, password
+    $dbname = 'poststorageschema'; //has three columns: user_type (reg/mod), username, password
     $conn = new mysqli($servername, $username, $password, $dbname);
     
     if($conn->connect_error){
@@ -12,7 +12,7 @@
     $username = $_POST["inputUsername"];
     $password = $_POST["inputPassword"];
 
-    $statement = mysqli_prepare($conn, "SELECT * FROM users WHERE username = ? AND password = ?");
+    $statement = mysqli_prepare($conn, "SELECT * FROM logincreds WHERE username = ? AND password = ?");
     mysqli_stmt_bind_param($statement, "ss", $username, $password);
     mysqli_stmt_execute($statement);
 
