@@ -167,7 +167,7 @@
             <tr>
                 <!--left bar empty-->
                 <td rowspan = 2 colspan = 4>
-                    <button class = "submittable" id = "postReplyButton" onclick="generateTable(document.getElementById('commentTable'), mountains)"> Reply </button>
+                    <button class = "submittable" id = "postReplyButton" onclick="createReplyForm()"> Reply </button>
                 </td>
                 <!--replying/loading a new comment will be like building a new row in the table-->
                 <td rowspan = 6 colspan = 2>right bar</td>
