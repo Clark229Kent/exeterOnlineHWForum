@@ -175,10 +175,26 @@
             <tr></tr>
             <tr>
                 <td colspan = 4>
-                    <table class = "commentTable">
+                    <table id = "replyFormTable">
                         <tr>
+                            <td colspan = 4>
+                                <textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan = 2>
+                                <button class = "submittable" id = "replySubmitButton" onclick = "createSingleComment()" > Submit </button>
+                            </td>
+                            <td colspan = 2>
+                                empty
+                            </td>
                         </tr>
                     </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan = 4>
+                    <table id = "postedRepliesTable"> </table>
                 </td>
             </tr>
           </table>
