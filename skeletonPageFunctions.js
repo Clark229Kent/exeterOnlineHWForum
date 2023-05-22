@@ -58,52 +58,40 @@ cn = window.prompt("Input number of columns",1);
    }
 }
 
+
 function createReplyForm(){
- for(let r=0;r<2;r++)
-  {
-   let x=document.getElementById("replyFormTable").insertRow(r);
-   for(let c=0;c<2;c++)  
-    {
-      if (r == 0){
-        let y=  x.insertCell(c);
-        y.id = "contentRow";
-        document.getElementById("contentRow").colSpan = "2";
-        document.getElementById("contentRow").innerHTML =
-         '<textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea><br><br>';
-        break;
-      }
-      else{
-        let y=  x.insertCell(c);
-        y.id = "NOTcontentRow";
-        document.getElementById("NOTcontentRow").colSpan = "1";
-        if (r == 1 && c == 0){
-          y.innerHTML = '<button class = "submittable" id = "replySubmitButton" onclick = "createSingleComment()" > Submit </button>';
-        }
-      }
-    //y.innerHTML="Row-"+r+" Column-"+c; 
-    }
-   }
+  var table = document.getElementById("replyFormTable");
+  if (table.style.display === "none") {
+    table.style.display = "block";
+  } else {
+  table.style.display === "none"
+  }
 }
 
+function submitPost(){
+  
+}
 
 
 function createSingleComment()
 {
+  var table = document.getElementById("replyFormTable");
+  table.style.display = "none";
  for(let r=0;r<3;r++)
   {
-   let x=document.getElementById("postedRepliesTable").insertRow(r);
+   var x=document.getElementById("postedRepliesTable").insertRow(r);
    for(let c=0;c<4;c++)  
     {
+      let y=  x.insertCell(c);
       if (r == 1){
-        let y=  x.insertCell(c);
-        y.id = "contentRow";
-        document.getElementById("contentRow").colSpan = "4";
+        y.id = "commentContentRow";
+        document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
+        document.getElementById("commentContentRow").colSpan = "4";
         break;
       }
       else{
-        let y =  x.insertCell(c);
-        y.id = "NOTcontentRow";
-        document.getElementById("NOTcontentRow").colSpan = "1";
+        y.id = "commentNOTcontentRow";
+        document.getElementById("commentNOTcontentRow").colSpan = "1";
         if (r == 0 && c == 0){
           y.innerHTML = "Resolved/Unresolved";
         }
@@ -111,27 +99,7 @@ function createSingleComment()
           y.innerHTML = "upvote";
         }
       }
-     //y.innerHTML="Row-"+r+" Column-"+c; 
     }
    }
 }
 
-/*
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-      let cell = row.insertCell();
-      let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
-    }
-  }
-}
-
-var mountains = [
-  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
-  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
-  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
-  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
-  { name: "Monte Amiata", height: 1738, place: "Siena" }
-];*/
