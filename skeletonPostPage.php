@@ -78,6 +78,8 @@
                 <td rowspan = 1 colspan = 1><?=$user?></td>
                 <td rowspan = 1 colspan = 2><?=$courseNum?>, <?=$other?></td>
                 <td rowspan = 1 colspan = 1><?=$upvotes?></td>
+                <td rowspan = 1 colspan = 1><form action="/deletePost.php" method="get"><button class ="submittable" id = "deletePostButton" onclick = "deletePostButton()" >$delete?</button></form></td>
+
                 <td rowspan = 4 colspan = 2>
                     <table class = "fitting">
                         <tr>
