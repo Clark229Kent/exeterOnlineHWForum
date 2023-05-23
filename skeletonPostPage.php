@@ -152,7 +152,7 @@
             <tr>
                 <!--left bar empty-->
                 <div class = "scrollable" height = 250px>
-                    <td rowspan = 3 colspan = 4><?=$title?><br><?=$content?></td>
+                    <td rowspan = 3 colspan = 4>forum question</td>
                 </div>
                 <!--right bar empty-->
             </tr>
@@ -169,7 +169,7 @@
             <tr>
                 <!--left bar empty-->
                 <td rowspan = 2 colspan = 4>
-                    <button class = "submittable" id = "postReplyButton" onclick="createReplyForm()"> Reply </button>
+                    <button class = "submittable" id = "createReplyButton" onclick="createReplyForm()"> Reply </button>
                 </td>
                 <!--replying/loading a new comment will be like building a new row in the table-->
                 <td rowspan = 6 colspan = 2>right bar</td>
@@ -177,21 +177,20 @@
             <tr></tr>
             <tr>
                 <td colspan = 4>
-                    <table id = "replyFormTable">
-                        <tr>
-                            <td colspan = 4>
-                                <textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan = 2>
-                                <button class = "submittable" id = "replySubmitButton" onclick = "createSingleComment()" > Submit </button>
-                            </td>
-                            <td colspan = 2>
-                                empty
-                            </td>
-                        </tr>
-                    </table>
+                    <div id = "replyForm">
+                        <table class = "hidden" id = "replyFormTable">
+                            <tr>
+                                <td colspan = 1>
+                                    <textarea placeholder="What you're curious about:" id="forumContentText" name="forumContentText"></textarea><br><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = 1>
+                                    <button class = "submittable" id = "postReplyButton" onclick="createSingleComment()"> Post </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
             <tr>
