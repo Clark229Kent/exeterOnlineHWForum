@@ -38,7 +38,7 @@ function runSearch(e){if (e.keyCode == 13){
 function deletePostButton(whichPost){
 
   var jsChosenPost = document.getElementById("deletePostButton");
-  window.location.href='skeletonHomePageForum.html';
+  window.location.href='skeletonHomePageForum.php';
   alert("Your post has been deleted.");
  /* if (confirm("deletePostButton")) {
     txt = "Your post has been deleted.";
@@ -46,11 +46,6 @@ function deletePostButton(whichPost){
     txt = "Your post was not deleted.";
   }*/
 
-}
-
-function submitPost(){
-  postSubmitButton.innerHTML = "Loading...";
-  window.location.href='skeletonPostPage.html';
 }
 
 function createTable()
@@ -73,46 +68,45 @@ cn = window.prompt("Input number of columns",1);
 
 
 function createReplyForm(){
-  var replyFormDiv = document.getElementById("replyForm");
-  if (replyFormDiv.style.display === "none") {
-    replyFormDiv.style.display = "block";
+  var table = document.getElementById("replyFormTable");
+  if (table.style.display === "none") {
+    table.style.display = "block";
   } else {
-    replyFormDiv.style.display = "none";
+  table.style.display === "none"
   }
 }
+
+function submitPost(){
+  
+}
+
 
 function createSingleComment()
 {
-  var replyFormDiv = document.getElementById("replyForm");
-  if (replyFormDiv.style.display === "none") {
-    replyFormDiv.style.display = "block";
-  } else {
-    replyFormDiv.style.display = "none";
-  }
-  for(let r=0;r<3;r++)
+  var table = document.getElementById("replyFormTable");
+  table.style.display = "none";
+ for(let r=0;r<3;r++)
+  {
+   var x=document.getElementById("postedRepliesTable").insertRow(r);
+   for(let c=0;c<4;c++)  
     {
-    var x=document.getElementById("postedRepliesTable").insertRow(r);
-    for(let c=0;c<2;c++)  
-      {
-        let y=  x.insertCell(c);
-        if (r == 1){
-          y.id = "commentContentRow";
-          document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
-          document.getElementById("commentContentRow").colSpan = "2";
-          break;
+      let y=  x.insertCell(c);
+      if (r == 1){
+        y.id = "commentContentRow";
+        document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
+        document.getElementById("commentContentRow").colSpan = "4";
+        break;
+      }
+      else{
+        y.id = "commentNOTcontentRow";
+        document.getElementById("commentNOTcontentRow").colSpan = "1";
+        if (r == 0 && c == 0){
+          y.innerHTML = "Resolved/Unresolved";
         }
-        else{
-          y.id = "commentNOTcontentRow";
-          document.getElementById("commentNOTcontentRow").colSpan = "1";
-          if (r == 0 && c == 0){
-            y.innerHTML = "Resolved/Unresolved";
-          }
-          if (r == 2 && c == 0){
-            y.innerHTML = "upvote";
-          }
+        if (r == 2 && c == 0){
+          y.innerHTML = "upvote";
         }
       }
     }
+   }
 }
-
-
