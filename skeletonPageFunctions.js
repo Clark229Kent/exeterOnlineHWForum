@@ -35,6 +35,19 @@ function runSearch(e){if (e.keyCode == 13){
   document.getElementById("searchText").value = "";
 }}
 
+function deletePostButton(whichPost){
+
+  var jsChosenPost = document.getElementById("deletePostButton");
+  window.location.href='skeletonHomePageForum.html';
+  alert("Your post has been deleted.");
+ /* if (confirm("deletePostButton")) {
+    txt = "Your post has been deleted.";
+  } else {
+    txt = "Your post was not deleted.";
+  }*/
+
+}
+
 function submitPost(){
   postSubmitButton.innerHTML = "Loading...";
   window.location.href='skeletonPostPage.html';
