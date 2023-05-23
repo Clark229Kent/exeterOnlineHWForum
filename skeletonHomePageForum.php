@@ -1,3 +1,62 @@
+<?php
+    $servername = '127.0.0.1:3306';
+    $username = 'root';
+    $password = '';
+    $dbname = 'poststorageschema';
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    if($conn->connect_error){
+        die('Connection failed');
+    }
+    //needs format http://localhost/.../filepath.php?id=n
+    $sql = "SELECT * FROM poststoragetable ORDER BY RAND() LIMIT 4";
+    $result = $conn->query($sql);
+    //0
+    $row0 = $result->fetch_assoc();
+    $id0 = $row0['id'];
+    $logtime0 = $row0['logtime'];
+    $title0 = $row0['title'];
+    $content0 = $row0['content'];
+    $subj0 = $row0['subj'];
+    $courseNum0 = $row0['courseNum'];
+    $other0 = $row0['otherTags'];
+    $user0 = $row0['userID'];
+    $upvotes0 = $row0['score'];
+    //1
+    $row1 = $result->fetch_assoc();
+    $id1 = $row1['id'];
+    $logtime1 = $row1['logtime'];
+    $title1 = $row1['title'];
+    $content1 = $row1['content'];
+    $subj1 = $row1['subj'];
+    $courseNum1 = $row1['courseNum'];
+    $other1 = $row1['otherTags'];
+    $user1 = $row1['userID'];
+    $upvotes1 = $row1['score'];
+    //2
+    $row2 = $result->fetch_assoc();
+    $id2 = $row2['id'];
+    $logtime2 = $row2['logtime'];
+    $title2 = $row2['title'];
+    $content2 = $row2['content'];
+    $subj2 = $row2['subj'];
+    $courseNum2 = $row2['courseNum'];
+    $other2 = $row2['otherTags'];
+    $user2 = $row2['userID'];
+    $upvotes2 = $row2['score'];
+    //3
+    $row3 = $result->fetch_assoc();
+    $id3 = $row3['id'];
+    $logtime3 = $row3['logtime'];
+    $title3 = $row3['title'];
+    $content3 = $row3['content'];
+    $subj3 = $row3['subj'];
+    $courseNum3 = $row3['courseNum'];
+    $other3 = $row3['otherTags'];
+    $user3 = $row3['userID'];
+    $upvotes3 = $row3['score'];
+    $conn->close();
+?>
 <html>
     <head>
         <link rel="stylesheet" href="skeletonCSS.css">
@@ -104,39 +163,11 @@
                                   var username = document.getElementById("inputUsername").value;
                                   var password = document.getElementById("inputPassword").value;
                           
-                                  // Store in Local Storage
+                                  // Store the input data in Local Storage
                                   localStorage.setItem("username", username);
                                   localStorage.setItem("password", password);
-
-                                  // Send to login form
-                                  $.ajax({
-                                    type: "POST",
-                                    url: "login.php",
-                                    data: { username: username, password: password },
-                                    success: function(response) {
-                                    // Handle the server's response
-                                    console.log(response);
-                                    },
-                                    error: function(xhr, status, error) {
-                                    console.log("An error occurred: " + error);
-                                    }
-                                });
-
-                                    //Direct to different homepage depending on user type
-                                    if (response.userType === 'moderator') {
-                                        window.location.href = 'moderator.html';
-                                    } else {
-                                        window.location.href = 'user.html';
-                                    }
-
-                                    //ALTERNATIVELY: disable/enable functions
-                                    if (response.userType === 'moderator') {
-                                        document.getElementById('deletePostButton').disabled = false;
-                                    } else {
-                                        document.getElementById('deletePostButton').disabled = true;
-                                    }
                           
-                                  // Display the login on page
+                                  // Display the input data on the page
                                   var message = "User entered: Username - " + username + ", Password - " + password;
                                   document.getElementById("inputmsg").innerHTML = message;
                                 }
@@ -178,18 +209,18 @@
                                             </center> 
                                         </td>
                                         <td colspan = 1>
-                                            <input class = "invis" type="number" type = "hidden" id="upvoteNumber0" name="upvoteNumber0" value="0"><br>  
+                                            <input class = "invis" type="number" type = "hidden" id="upvoteNumber0" name="upvoteNumber0" value="<?=$upvotes0?>"><br>  
                                         </td>
-                                        <td colspan = 2 onclick="window.location.href='skeletonPostPage.html';">
-                                            forum question (click here to go to post page)
+                                        <td colspan = 2 onclick="window.location.href='skeletonPostPage.php?id=<?=$id0?>';">
+                                            <?=$title0?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan = 4>
                                             <label for="postDescript0">
-                                                Post Description:<br>
+                                                Post description:<br>
                                             </label><br>
-                                            <input class = "invis" type="text" id="postDescript0" name="postDescript0"><br> 
+                                            <input class = "invis" type="text" id="postDescript0" name="postDescript0" value =<?=$content0?>><br> 
                                         </td>
                                     </tr>
                                     <tr>
@@ -197,6 +228,7 @@
                                             <div>
                                                 <table class = "forumPostTable" class = "scrollable">
                                                     <tr max-height = "30px"><!--these tags will populate depending on the actual post-->
+                                                        <!--TODO edit this to just be tag text, no link-->
                                                         <td>
                                                             <button onclick="window.location.href='skeletonTagsPage.html';" > Tag 1 (click any tag to go to tags page)</button>
                                                         </td>
