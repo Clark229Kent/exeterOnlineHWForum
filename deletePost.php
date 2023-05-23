@@ -14,10 +14,8 @@
     if($conn->query($sql) === TRUE) {
         echo "Record deleted successfully";
       } else {
-        echo "Error deleting record: " . $conn->error;
+        echo "Error deleting record: " . $conn ->error;
       }
-
- 
     $conn->close();
-        
-    ?>
+    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonHomePageForum.php");
+?>
