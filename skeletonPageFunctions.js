@@ -73,46 +73,46 @@ cn = window.prompt("Input number of columns",1);
 
 
 function createReplyForm(){
-  var table = document.getElementById("replyFormTable");
-  if (table.style.display === "none") {
-    table.style.display = "block";
+  var replyFormDiv = document.getElementById("replyForm");
+  if (replyFormDiv.style.display === "none") {
+    replyFormDiv.style.display = "block";
   } else {
-  table.style.display === "none"
+    replyFormDiv.style.display = "none";
   }
 }
 
-function submitPost(){
-  
-}
-
-
 function createSingleComment()
 {
-  var table = document.getElementById("replyFormTable");
-  table.style.display = "none";
- for(let r=0;r<3;r++)
-  {
-   var x=document.getElementById("postedRepliesTable").insertRow(r);
-   for(let c=0;c<4;c++)  
+  var replyFormDiv = document.getElementById("replyForm");
+  if (replyFormDiv.style.display === "none") {
+    replyFormDiv.style.display = "block";
+  } else {
+    replyFormDiv.style.display = "none";
+  }
+  for(let r=0;r<3;r++)
     {
-      let y=  x.insertCell(c);
-      if (r == 1){
-        y.id = "commentContentRow";
-        document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
-        document.getElementById("commentContentRow").colSpan = "4";
-        break;
-      }
-      else{
-        y.id = "commentNOTcontentRow";
-        document.getElementById("commentNOTcontentRow").colSpan = "1";
-        if (r == 0 && c == 0){
-          y.innerHTML = "Resolved/Unresolved";
+    var x=document.getElementById("postedRepliesTable").insertRow(r);
+    for(let c=0;c<2;c++)  
+      {
+        let y=  x.insertCell(c);
+        if (r == 1){
+          y.id = "commentContentRow";
+          document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
+          document.getElementById("commentContentRow").colSpan = "2";
+          break;
         }
-        if (r == 2 && c == 0){
-          y.innerHTML = "upvote";
+        else{
+          y.id = "commentNOTcontentRow";
+          document.getElementById("commentNOTcontentRow").colSpan = "1";
+          if (r == 0 && c == 0){
+            y.innerHTML = "Resolved/Unresolved";
+          }
+          if (r == 2 && c == 0){
+            y.innerHTML = "upvote";
+          }
         }
       }
     }
-   }
 }
+
 
