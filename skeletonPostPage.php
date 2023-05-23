@@ -43,7 +43,7 @@
             </tr>
             <tr> 
                 <td colspan = 2>logo</td>
-                <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.html';">
+                <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.php';">
                     home (click here to go to home page)
                 </td>
                 <td colspan = 1 id = "bold">
