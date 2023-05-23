@@ -44,7 +44,7 @@
             <tr> 
                 <td colspan = 2>logo</td>
                 <td colspan = 3 class = "bold" onclick="window.location.href='skeletonHomePageForum.php';">
-                    home (click here to go to home page)
+                    Home
                 </td>
                 <td colspan = 1 id = "bold">
                     <div class="dropdown">
@@ -78,7 +78,7 @@
                 <td rowspan = 1 colspan = 1><?=$user?></td>
                 <td rowspan = 1 colspan = 2><?=$courseNum?>, <?=$other?></td>
                 <td rowspan = 1 colspan = 1><?=$upvotes?></td>
-                <td rowspan = 1 colspan = 1><form action="/deletePost.php" method="get"><button class ="submittable" id = "deletePostButton" onclick = "deletePostButton()" >delete</button></form></td>
+                <td rowspan = 1 colspan = 1><form action="deletePost.php?id=<?=$id?>" method="post"><button class ="submittable" id = "deletePostButton">Delete?</button></form></td>
 
                 <td rowspan = 4 colspan = 2>
                     <table class = "fitting">
@@ -152,7 +152,7 @@
             <tr>
                 <!--left bar empty-->
                 <div class = "scrollable" height = 250px>
-                    <td rowspan = 3 colspan = 4>forum question</td>
+                    <td rowspan = 3 colspan = 4><?=$title?><br><?=$content?></td>
                 </div>
                 <!--right bar empty-->
             </tr>
@@ -169,7 +169,7 @@
             <tr>
                 <!--left bar empty-->
                 <td rowspan = 2 colspan = 4>
-                    <button class = "submittable" id = "createReplyButton" onclick="createReplyForm()"> Reply </button>
+                    <button class = "submittable" id = "postReplyButton" onclick="createReplyForm()"> Reply </button>
                 </td>
                 <!--replying/loading a new comment will be like building a new row in the table-->
                 <td rowspan = 6 colspan = 2>right bar</td>
@@ -177,20 +177,21 @@
             <tr></tr>
             <tr>
                 <td colspan = 4>
-                    <div id = "replyForm">
-                        <table class = "hidden" id = "replyFormTable">
-                            <tr>
-                                <td colspan = 1>
-                                    <textarea placeholder="What you're curious about:" id="forumContentText" name="forumContentText"></textarea><br><br>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan = 1>
-                                    <button class = "submittable" id = "postReplyButton" onclick="createSingleComment()"> Post </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    <table id = "replyFormTable">
+                        <tr>
+                            <td colspan = 4>
+                                <textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan = 2>
+                                <button class = "submittable" id = "replySubmitButton" onclick = "createSingleComment()" > Submit </button>
+                            </td>
+                            <td colspan = 2>
+                                empty
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>
