@@ -15,29 +15,7 @@
 
 
     $searchKeywords = $_POST['searchText'];
-
-    //separate text into array of keywords
-    $keywordsArray = explode(',', $searchKeywords);
-    //trim white space out
-    $keywordsArray = array_map('trim', $keywordsArray);
-    //remove empty entries
-    $keywordsArray = array_filter($keywordsArray);
-
-    //loop search individual words
-    $sql = "SELECT * FROM posts WHERE ";
-    $conditions = [];
-
-    foreach ($keywordsArray as $keyword) {
-        $conditions[] = "(title LIKE '%$keyword%' OR content LIKE '%$keyword%')";
-    }
-
-    if (!empty($conditions)) {
-        $sql .= implode(" OR ", $conditions);
-        $result = mysqli_query($connection, $sql);
-
-    } else {
-        
-    }
+    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonSearchPage.php?search=" . $searchKeywords);
 
     $conn->close()
 ?>
