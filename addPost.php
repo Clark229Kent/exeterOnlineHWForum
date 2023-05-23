@@ -25,5 +25,10 @@
     else{
         echo $conn->error;
     }
-    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonPostPage.html");
+    $sql = "SELECT * FROM poststoragetable WHERE logtime='$date' AND title='$title'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $id = $row['id'];
+    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonPostPage.php?id=" . $id);
+    $conn->close();
 ?>
