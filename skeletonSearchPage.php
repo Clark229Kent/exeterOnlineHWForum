@@ -1,3 +1,39 @@
+<?php
+    //connection to server
+    $servername = '127.0.0.1:3306';
+    $username = 'root';
+    $password = '';
+    $dbname = 'poststorageschema';
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die('Connection failed: ' . $conn->connect_error);
+    }
+
+    $searchKeywords = $_GET['search'];
+    //separate text into array of keywords
+    $keywordsArray = explode(',', $searchKeywords);
+    //trim white space out
+    $keywordsArray = array_map('trim', $keywordsArray);
+    //remove empty entries
+    $keywordsArray = array_filter($keywordsArray);
+
+    //loop search individual words
+    $sql = "SELECT * FROM poststoragetable WHERE ";
+    $conditions = [];
+
+    foreach ($keywordsArray as $keyword) {
+        $conditions[] = "(title LIKE '%$keyword%' OR content LIKE '%$keyword%')";
+    }
+
+    if (!empty($conditions)) {
+        $sql .= implode(" OR ", $conditions);
+        $result = mysqli_query($conn, $sql);
+        $row = $result->fetch_assoc();
+    } 
+    $conn->close()
+?>
 <html>
     <head>
         <link rel="stylesheet" href="skeletonCSS.css">
@@ -53,7 +89,7 @@
                                 <td colspan = 3>
                                     <label for="searchText">Search for posts here, use double quotes for tags:</label><br><br><br>
                                     <input type="text" id="searchText" name="searchText"><br><br>
-                                    <script>
+                                    <!--<script>
                                         document.getElementById("searchText").addEventListener("keydown", function runSearch(e){if (e.keyCode == 13){
                                                 console.log("Enter key is pressed");
                                                 document.getElementById("searchEnterButton").click();
@@ -63,7 +99,9 @@
                             </table>
                         
                     
-                                <button hidden id = "searchEnterButton" onclick="window.location.href='skeletonSearchPage.html';"></button>
+                                <button hidden id = "searchEnterButton" onclick="window.location.href='skeletonSearchPage.html';"></button>-->
+                                </td>
+                        </table>
                             </form> 
                         
                 </td>
