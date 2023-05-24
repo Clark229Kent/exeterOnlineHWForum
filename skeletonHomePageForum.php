@@ -143,7 +143,7 @@
                         </div>
                     </div>
                 </td>
-                <td colspan = 2 id = "bold">
+                <td colspan="2" id="bold">
                     <div class="dropdown">
                         <button class="dropbtn">login</button>
                         <div class="dropdown-content-login">
@@ -153,7 +153,7 @@
                                 <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
                                 <label for="inputPassword">Password:</label><br>
                                 <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
-                                <button class = "submittable" onclick="submitLogin()">Login</button>
+                                <button class="submittable" onclick="submitLogin(event)">Login</button>
                                 <label>
                                     <input type="checkbox" checked="checked" name="remember"> Remember me
                                 </label>
@@ -168,98 +168,63 @@
                                     <option value="reg">Regular</option>
                                     <option value="mod">Moderator</option>
                                 </select><br><br>
-                                <button class="submittable" onclick="submitSignup()">Sign Up</button>
+                                <button class="submittable" onclick="submitSignup(event)">Sign Up</button>
                             </center>
+                        </div>
+                    </div>
+                </td>
 
-                            <form action="login.php" method="POST">
-                                <td colspan="2" id="bold">
-                                    <div class="dropdown">
-                                        <button class="dropbtn">login</button>
-                                        <div class="dropdown-content-login">
-                                            <center>
-                                                <br>
-                                                <label for="inputUsername">Username:</label><br>
-                                                <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
-                                                <label for="inputPassword">Password:</label><br>
-                                                <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
-                                                <button class="submittable" type="submit">Login</button>
-                                                <label>
-                                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                                </label>
-                                                <div id="inputmsg"></div>
-                                            </div>
-                                        </center>
-                                    </div>
-                                </div>
-                            </td>
-                            </form>
+                <script>
+                    function submitLogin(event) {
+                        event.preventDefault(); // Prevent form submission
+                        // Retrieve the input data
+                        var username = document.getElementById("inputUsername").value;
+                        var password = document.getElementById("inputPassword").value;
 
-                    <!--
-                            <script> // login
-                            <form action="login.php" method="post">
-                                function submitLogin() {
-                                  // Retrieve the input data
-                                  var username = document.getElementById("inputUsername").value;
-                                  var password = document.getElementById("inputPassword").value;
-                          
-                                  // Store in Local Storage
-                                  localStorage.setItem("username", username);
-                                  localStorage.setItem("password", password);
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
 
-                                  // Send to login form
-                                  $.ajax({
-                                    type: "POST",
-                                    url: "login.php",
-                                    data: { username: username, password: password },
-                                    success: function(response) {
-                                    // Handle the server's response
-                                    console.log(response);
-                                    },
-                                    error: function(xhr, status, error) {
-                                    console.log("An error occurred: " + error);
-                                    }
-                                });
+                        // Set the values in the login form
+                        document.getElementById("loginUsername").value = username;
+                        document.getElementById("loginPassword").value = password;
 
-                                    //Direct to different homepage depending on user type
-                                    if (response.userType === 'moderator') {
-                                        window.location.href = 'moderator.html';
-                                    } else {
-                                        window.location.href = 'user.html';
-                                    }
+                        // Submit the login form
+                        document.getElementById("loginForm").submit();
+                    }
 
-                                    //ALTERNATIVELY: disable/enable functions
-                                    if (response.userType === 'moderator') {
-                                        document.getElementById('deletePostButton').disabled = false;
-                                    } else {
-                                        document.getElementById('deletePostButton').disabled = true;
-                                    }
-                          
-                                  // Display the login on page
-                                  var message = "User entered: Username - " + username + ", Password - " + password;
-                                  document.getElementById("inputmsg").innerHTML = message;
-                                }
--->
+                    function submitSignup(event) {
+                        event.preventDefault(); // Prevent form submission
+                        // Retrieve the input data
+                        var username = document.getElementById("signupUsername").value;
+                        var password = document.getElementById("signupPassword").value;
+                        var userType = document.getElementById("signupUserType").value;
 
-                                function submitSignup() {
-                                    var signupUsername = document.getElementById("signupUsername").value;
-                                    var signupPassword = document.getElementById("signupPassword").value;
-                                    var signupUserType = document.getElementById("signupUserType").value;
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
 
-                                    // Send to signup php file
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "signup.php",
-                                        data: { username: signupUsername, password: signupPassword, userType: signupUserType },
-                                        success: function (response) {
-                                            console.log(response);
-                                            document.getElementById("inputmsg").innerHTML = response;
-                                        },
-                                        error: function (xhr, status, error) {
-                                            console.log("An error occurred: " + error);
-                                        }
-                                    });
-                                }
-                              </script>
+                        // Set the values in the signup form
+                        document.getElementById("signupUsernameInput").value = username;
+                        document.getElementById("signupPasswordInput").value = password;
+                        document.getElementById("signupUserTypeInput").value = userType;
+
+                        // Submit the signup form
+                        document.getElementById("signupForm").submit();
+                    }
+                </script>
+
+                <form id="loginForm" action="login.php" method="POST">
+                    <input type="hidden" name="inputUsername" id="loginUsername">
+                    <input type="hidden" name="inputPassword" id="loginPassword">
+                </form>
+
+                <form id="signupForm" action="signup.php" method="POST">
+                    <input type="hidden" name="signupUsername" id="signupUsernameInput">
+                    <input type="hidden" name="signupPassword" id="signupPasswordInput">
+                    <input type="hidden" name="signupUserType" id="signupUserTypeInput">
+                </form>
+
                             
                         </div>
                     </div>
