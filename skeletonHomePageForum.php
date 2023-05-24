@@ -144,92 +144,103 @@
                     </div>
                 </td>
                <td colspan="2" id="bold">
-    <div class="dropdown">
-        <button class="dropbtn">login</button>
-        <div class="dropdown-content-login">
-            <center>
-                <br>
+                    <div class="dropdown">
+                        <?php
+                        session_start();
+                        if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
+                            // if user is logged in
+                            $username = $_SESSION["username"];
+                            echo '<button class="dropbtn">' . $username . '</button>';
+                        } else {
+                            // User is not logged in
+                            echo '<button class="dropbtn">login</button>';
+                        }
+                        ?>
+                        <button class="dropbtn">login</button>
+                        <div class="dropdown-content-login">
+                            <center>
+                                <br>
+                                <form id="loginForm" action="login.php" method="POST">
+                                    <label for="inputUsername">Username:</label><br>
+                                    <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
+                                    <label for="inputPassword">Password:</label><br>
+                                    <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
+                                    <button class="submittable" type="submit" onclick="submitLogin(event)">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                    <div id="inputmsg"></div>
+                                </form>
+                                <br>
+                                <form id="signupForm" action="signup.php" method="POST">
+                                    <label for="signupUsername">New Username:</label><br>
+                                    <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
+                                    <label for="signupPassword">New Password:</label><br>
+                                    <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
+                                    <label for="signupUserType">User Type:</label><br>
+                                    <select id="signupUserType" name="signupUserType" required>
+                                        <option value="reg">Regular</option>
+                                        <option value="mod">Moderator</option>
+                                    </select><br><br>
+                                    <button class="submittable" type="submit" onclick="submitSignup(event)">Sign Up</button>
+                                </form>
+                            </center>
+                        </div>
+                    </div>
+                </td>
+
+                <script>
+                    function submitLogin(event) {
+                        event.preventDefault(); // Prevent form submission
+
+                        // Retrieve the input data
+                        var username = document.getElementById("inputUsername").value;
+                        var password = document.getElementById("inputPassword").value;
+
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
+
+                        // Set the values in the login form
+                        document.getElementById("loginUsername").value = username;
+                        document.getElementById("loginPassword").value = password;
+
+                        // Submit the login form
+                        document.getElementById("loginForm").submit();
+                    }
+
+                    function submitSignup(event) {
+                        event.preventDefault(); // Prevent form submission
+
+                        // Retrieve the input data
+                        var username = document.getElementById("signupUsername").value;
+                        var password = document.getElementById("signupPassword").value;
+                        var userType = document.getElementById("signupUserType").value;
+
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
+
+                        // Set the values in the signup form
+                        document.getElementById("signupUsernameInput").value = username;
+                        document.getElementById("signupPasswordInput").value = password;
+                        document.getElementById("signupUserTypeInput").value = userType;
+
+                        // Submit the signup form
+                        document.getElementById("signupForm").submit();
+                    }
+                </script>
+
                 <form id="loginForm" action="login.php" method="POST">
-                    <label for="inputUsername">Username:</label><br>
-                    <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
-                    <label for="inputPassword">Password:</label><br>
-                    <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
-                    <button class="submittable" type="submit" onclick="submitLogin(event)">Login</button>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                    <div id="inputmsg"></div>
+                    <input type="hidden" name="inputUsername" id="loginUsername">
+                    <input type="hidden" name="inputPassword" id="loginPassword">
                 </form>
-                <br>
+
                 <form id="signupForm" action="signup.php" method="POST">
-                    <label for="signupUsername">New Username:</label><br>
-                    <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
-                    <label for="signupPassword">New Password:</label><br>
-                    <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
-                    <label for="signupUserType">User Type:</label><br>
-                    <select id="signupUserType" name="signupUserType" required>
-                        <option value="reg">Regular</option>
-                        <option value="mod">Moderator</option>
-                    </select><br><br>
-                    <button class="submittable" type="submit" onclick="submitSignup(event)">Sign Up</button>
+                    <input type="hidden" name="signupUsername" id="signupUsernameInput">
+                    <input type="hidden" name="signupPassword" id="signupPasswordInput">
+                    <input type="hidden" name="signupUserType" id="signupUserTypeInput">
                 </form>
-            </center>
-        </div>
-    </div>
-</td>
-
-<script>
-    function submitLogin(event) {
-        event.preventDefault(); // Prevent form submission
-        
-        // Retrieve the input data
-        var username = document.getElementById("inputUsername").value;
-        var password = document.getElementById("inputPassword").value;
-
-        // Store in Local Storage
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-
-        // Set the values in the login form
-        document.getElementById("loginUsername").value = username;
-        document.getElementById("loginPassword").value = password;
-
-        // Submit the login form
-        document.getElementById("loginForm").submit();
-    }
-
-    function submitSignup(event) {
-        event.preventDefault(); // Prevent form submission
-        
-        // Retrieve the input data
-        var username = document.getElementById("signupUsername").value;
-        var password = document.getElementById("signupPassword").value;
-        var userType = document.getElementById("signupUserType").value;
-
-        // Store in Local Storage
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-
-        // Set the values in the signup form
-        document.getElementById("signupUsernameInput").value = username;
-        document.getElementById("signupPasswordInput").value = password;
-        document.getElementById("signupUserTypeInput").value = userType;
-
-        // Submit the signup form
-        document.getElementById("signupForm").submit();
-    }
-</script>
-
-<form id="loginForm" action="login.php" method="POST">
-    <input type="hidden" name="inputUsername" id="loginUsername">
-    <input type="hidden" name="inputPassword" id="loginPassword">
-</form>
-
-<form id="signupForm" action="signup.php" method="POST">
-    <input type="hidden" name="signupUsername" id="signupUsernameInput">
-    <input type="hidden" name="signupPassword" id="signupPasswordInput">
-    <input type="hidden" name="signupUserType" id="signupUserTypeInput">
-</form>
 
 
                 </td>
