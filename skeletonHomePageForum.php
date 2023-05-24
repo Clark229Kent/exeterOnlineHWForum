@@ -143,115 +143,94 @@
                         </div>
                     </div>
                 </td>
-                <td colspan = 2 id = "bold">
+                <td colspan="2" id="bold">
                     <div class="dropdown">
                         <button class="dropbtn">login</button>
                         <div class="dropdown-content-login">
                             <center>
                                 <br>
-                                <label for="inputUsername">Username:</label><br>
-                                <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
-                                <label for="inputPassword">Password:</label><br>
-                                <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
-                                <button class = "submittable" onclick="submitLogin()">Login</button>
-                                <label>
-                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                </label>
-                                <div id="inputmsg"></div>
+                                <form id="loginForm" action="login.php" method="POST">
+                                    <label for="inputUsername">Username:</label><br>
+                                    <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
+                                    <label for="inputPassword">Password:</label><br>
+                                    <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
+                                    <button class="submittable" type="submit" onclick="submitLogin(event)">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                    <div id="inputmsg"></div>
+                                </form>
                                 <br>
-                                <label for="signupUsername">New Username:</label><br>
-                                <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
-                                <label for="signupPassword">New Password:</label><br>
-                                <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
-                                <label for="signupUserType">User Type:</label><br>
-                                <select id="signupUserType" name="signupUserType" required>
-                                    <option value="reg">Regular</option>
-                                    <option value="mod">Moderator</option>
-                                </select><br><br>
-                                <button class="submittable" onclick="submitSignup()">Sign Up</button>
+                                <form id="signupForm" action="signup.php" method="POST">
+                                    <label for="signupUsername">New Username:</label><br>
+                                    <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
+                                    <label for="signupPassword">New Password:</label><br>
+                                    <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
+                                    <label for="signupUserType">User Type:</label><br>
+                                    <select id="signupUserType" name="signupUserType" required>
+                                        <option value="reg">Regular</option>
+                                        <option value="mod">Moderator</option>
+                                    </select><br><br>
+                                    <button class="submittable" type="submit" onclick="submitSignup(event)">Sign Up</button>
+                                </form>
                             </center>
+                        </div>
+                    </div>
+                </td>
 
-                            <script> // login
-                            <form action="login.php" method="POST">
-                            <td colspan="2" id="bold">
-                                <div class="dropdown">
-                                    <button class="dropbtn">login</button>
-                                    <div class="dropdown-content-login">
-                                        <center>
-                                            <br>
-                                            <label for="inputUsername">Username:</label><br>
-                                            <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
-                                            <label for="inputPassword">Password:</label><br>
-                                            <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
-                                            <button class="submittable" onclick="submitLogin(event)">Login</button>
-                                            <label>
-                                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                                            </label>
-                                            <div id="inputmsg"></div>
-                                            <br>
-                                            <label for="signupUsername">New Username:</label><br>
-                                            <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
-                                            <label for="signupPassword">New Password:</label><br>
-                                            <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
-                                            <label for="signupUserType">User Type:</label><br>
-                                            <select id="signupUserType" name="signupUserType" required>
-                                                <option value="reg">Regular</option>
-                                                <option value="mod">Moderator</option>
-                                            </select><br><br>
-                                            <button class="submittable" onclick="submitSignup(event)">Sign Up</button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </td>
+                <script>
+                    function submitLogin(event) {
+                        event.preventDefault(); // Prevent form submission
 
-                            <script>
-                                function submitLogin() {
-                                    // Retrieve the input data
-                                    var username = document.getElementById("inputUsername").value;
-                                    var password = document.getElementById("inputPassword").value;
+                        // Retrieve the input data
+                        var username = document.getElementById("inputUsername").value;
+                        var password = document.getElementById("inputPassword").value;
 
-                                    // Store in Local Storage
-                                    localStorage.setItem("username", username);
-                                    localStorage.setItem("password", password);
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
 
-                                    // Set the values in the login form
-                                    document.getElementById("loginUsername").value = username;
-                                    document.getElementById("loginPassword").value = password;
+                        // Set the values in the login form
+                        document.getElementById("loginUsername").value = username;
+                        document.getElementById("loginPassword").value = password;
 
-                                    // Submit the login form
-                                    document.getElementById("loginForm").submit();
-                                }
+                        // Submit the login form
+                        document.getElementById("loginForm").submit();
+                    }
 
-                                function submitSignup() {
-                                    // Retrieve the input data
-                                    var username = document.getElementById("signupUsername").value;
-                                    var password = document.getElementById("signupPassword").value;
-                                    var userType = document.getElementById("signupUserType").value;
+                    function submitSignup(event) {
+                        event.preventDefault(); // Prevent form submission
 
-                                    // Store in Local Storage
-                                    localStorage.setItem("username", username);
-                                    localStorage.setItem("password", password);
+                        // Retrieve the input data
+                        var username = document.getElementById("signupUsername").value;
+                        var password = document.getElementById("signupPassword").value;
+                        var userType = document.getElementById("signupUserType").value;
 
-                                    // Set the values in the signup form
-                                    document.getElementById("signupUsernameInput").value = username;
-                                    document.getElementById("signupPasswordInput").value = password;
-                                    document.getElementById("signupUserTypeInput").value = userType;
+                        // Store in Local Storage
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("password", password);
 
-                                    // Submit the signup form
-                                    document.getElementById("signupForm").submit();
-                                }
-                            </script>
+                        // Set the values in the signup form
+                        document.getElementById("signupUsernameInput").value = username;
+                        document.getElementById("signupPasswordInput").value = password;
+                        document.getElementById("signupUserTypeInput").value = userType;
 
-                            <form id="loginForm" action="login.php" method="POST">
-                                <input type="hidden" name="inputUsername" id="loginUsername">
-                                <input type="hidden" name="inputPassword" id="loginPassword">
-                            </form>
+                        // Submit the signup form
+                        document.getElementById("signupForm").submit();
+                    }
+                </script>
 
-                            <form id="signupForm" action="signup.php" method="POST">
-                                <input type="hidden" name="signupUsername" id="signupUsernameInput">
-                                <input type="hidden" name="signupPassword" id="signupPasswordInput">
-                                <input type="hidden" name="signupUserType" id="signupUserTypeInput">
-                            </form>
+                <form id="loginForm" action="login.php" method="POST">
+                    <input type="hidden" name="inputUsername" id="loginUsername">
+                    <input type="hidden" name="inputPassword" id="loginPassword">
+                </form>
+
+                <form id="signupForm" action="signup.php" method="POST">
+                    <input type="hidden" name="signupUsername" id="signupUsernameInput">
+                    <input type="hidden" name="signupPassword" id="signupPasswordInput">
+                    <input type="hidden" name="signupUserType" id="signupUserTypeInput">
+                </form>
+
 
                 </td>
             </tr>
