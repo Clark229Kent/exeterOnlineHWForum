@@ -138,7 +138,7 @@
                 <td rowspan = 1 colspan = 1>You searched for:</td>
                 <td rowspan = 1 colspan = 7>
                     <label for="searchText">
-                    <input type="text" id="searchText" name="searchText" value = "<?=$_GET['search']?>"><br>
+                    <input type="text" class = "invis" id="searchText" name="searchText" value = "<?=$_GET['search']?>"><br>
                 </td>
             </tr>
             <tr>
@@ -152,9 +152,9 @@
                                         <td rowspan = 1 colspan = 1>
                                             <button onclick = "incrementVote(4)" > Upvote </button>
                                         </td>
-                                        <td rowspan = 1 colspan = 2>Post 4</td>
-                                        <td rowspan = 1 colspan = 1>subject</td>
-                                        <td rowspan = 1 colspan = 1>course</td>
+                                        <td rowspan = 1 colspan = 2><?=$row[0]['title']?></td>
+                                        <td rowspan = 1 colspan = 1><?=$row[0]['subj']?></td>
+                                        <td rowspan = 1 colspan = 1><?=$row[0]['courseNum']?></td>
                                         <td rowspan = 2 colspan = 1># comments</td>
                                     </tr>
                                     <tr>
@@ -173,9 +173,9 @@
                                         <td rowspan = 1 colspan = 1>
                                             <button onclick = "incrementVote(5)" > Upvote </button>
                                         </td>
-                                        <td rowspan = 1 colspan = 2>Post 5</td>
-                                        <td rowspan = 1 colspan = 1>subject</td>
-                                        <td rowspan = 1 colspan = 1>course</td>
+                                        <td rowspan = 1 colspan = 2><?=$row[1]['title']?></td>
+                                        <td rowspan = 1 colspan = 1><?=$row[1]['subj']?></td>
+                                        <td rowspan = 1 colspan = 1><?=$row[1]['courseNum']?></td>
                                         <td rowspan = 2 colspan = 1># comments</td>
                                     </tr>
                                     <tr>
