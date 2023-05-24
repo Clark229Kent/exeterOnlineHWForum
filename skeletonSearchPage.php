@@ -30,7 +30,9 @@
     if (!empty($conditions)) {
         $sql .= implode(" OR ", $conditions);
         $result = mysqli_query($conn, $sql);
-        $row = $result->fetch_assoc();
+        for ($i=0;$i<mysqli_num_rows($result);$i++){
+            $row[$i] = $result->fetch_assoc();
+        }
     } 
     $conn->close()
 ?>
@@ -136,7 +138,7 @@
                 <td rowspan = 1 colspan = 1>You searched for:</td>
                 <td rowspan = 1 colspan = 7>
                     <label for="searchText">
-                    <input type="text" id="searchText" name="searchText" value = ""><br>
+                    <input type="text" id="searchText" name="searchText" value = "<?=$_GET['search']?>"><br>
                 </td>
             </tr>
             <tr>
