@@ -15,8 +15,8 @@
     $num = $_POST['forumCourseTag'];
     $otherTags = $_POST['forumOther'];
 
-    $sql = "INSERT INTO poststoragetable (logtime, title, content, subj, courseNum, otherTags)
-            VALUES ('$date', '$title', '$content', '$subj', '$num', '$otherTags')";
+    $sql = "INSERT INTO poststoragetable (logtime, title, content, subj, courseNum, otherTags, score, parent)
+            VALUES ('$date', '$title', '$content', '$subj', '$num', '$otherTags', 0, -1)";
     if ($conn->query($sql) === TRUE) {
         echo "<script>
             alert('works!');
