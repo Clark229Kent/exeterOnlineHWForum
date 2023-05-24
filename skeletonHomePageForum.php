@@ -158,21 +158,80 @@
                                     <input type="checkbox" checked="checked" name="remember"> Remember me
                                 </label>
                                 <div id="inputmsg"></div>
-                            </div>
+                                <br>
+                                <label for="signupUsername">New Username:</label><br>
+                                <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
+                                <label for="signupPassword">New Password:</label><br>
+                                <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
+                                <label for="signupUserType">User Type:</label><br>
+                                <select id="signupUserType" name="signupUserType" required>
+                                    <option value="reg">Regular</option>
+                                    <option value="mod">Moderator</option>
+                                </select><br><br>
+                                <button class="submittable" onclick="submitSignup()">Sign Up</button>
                             </center>
-                            <script>
+                            
+                            <script> // login
                                 function submitLogin() {
                                   // Retrieve the input data
                                   var username = document.getElementById("inputUsername").value;
                                   var password = document.getElementById("inputPassword").value;
                           
-                                  // Store the input data in Local Storage
+                                  // Store in Local Storage
                                   localStorage.setItem("username", username);
                                   localStorage.setItem("password", password);
+
+                                  // Send to login form
+                                  $.ajax({
+                                    type: "POST",
+                                    url: "login.php",
+                                    data: { username: username, password: password },
+                                    success: function(response) {
+                                    // Handle the server's response
+                                    console.log(response);
+                                    },
+                                    error: function(xhr, status, error) {
+                                    console.log("An error occurred: " + error);
+                                    }
+                                });
+
+                                    //Direct to different homepage depending on user type
+                                    if (response.userType === 'moderator') {
+                                        window.location.href = 'moderator.html';
+                                    } else {
+                                        window.location.href = 'user.html';
+                                    }
+
+                                    //ALTERNATIVELY: disable/enable functions
+                                    if (response.userType === 'moderator') {
+                                        document.getElementById('deletePostButton').disabled = false;
+                                    } else {
+                                        document.getElementById('deletePostButton').disabled = true;
+                                    }
                           
-                                  // Display the input data on the page
+                                  // Display the login on page
                                   var message = "User entered: Username - " + username + ", Password - " + password;
                                   document.getElementById("inputmsg").innerHTML = message;
+                                }
+
+                                function submitSignup() {
+                                    var signupUsername = document.getElementById("signupUsername").value;
+                                    var signupPassword = document.getElementById("signupPassword").value;
+                                    var signupUserType = document.getElementById("signupUserType").value;
+
+                                    // Send to signup php file
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "signup.php",
+                                        data: { username: signupUsername, password: signupPassword, userType: signupUserType },
+                                        success: function (response) {
+                                            console.log(response);
+                                            document.getElementById("inputmsg").innerHTML = response;
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.log("An error occurred: " + error);
+                                        }
+                                    });
                                 }
                               </script>
                             
