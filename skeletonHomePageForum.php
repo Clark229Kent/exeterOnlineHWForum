@@ -171,6 +171,30 @@
                                 <button class="submittable" onclick="submitSignup()">Sign Up</button>
                             </center>
 
+                            <form action="login.php" method="POST">
+                                <td colspan="2" id="bold">
+                                    <div class="dropdown">
+                                        <button class="dropbtn">login</button>
+                                        <div class="dropdown-content-login">
+                                            <center>
+                                                <br>
+                                                <label for="inputUsername">Username:</label><br>
+                                                <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
+                                                <label for="inputPassword">Password:</label><br>
+                                                <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
+                                                <button class="submittable" type="submit">Login</button>
+                                                <label>
+                                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                                </label>
+                                                <div id="inputmsg"></div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </td>
+                            </form>
+
+                    <!--
                             <script> // login
                             <form action="login.php" method="post">
                                 function submitLogin() {
@@ -214,6 +238,7 @@
                                   var message = "User entered: Username - " + username + ", Password - " + password;
                                   document.getElementById("inputmsg").innerHTML = message;
                                 }
+-->
 
                                 function submitSignup() {
                                     var signupUsername = document.getElementById("signupUsername").value;
