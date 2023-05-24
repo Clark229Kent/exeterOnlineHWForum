@@ -81,6 +81,7 @@
                 <td colspan = 3 id = "bold">
                     <body>
                         <!--from https://www.sliderrevolution.com/resources/css-search-box/-->
+                        <form action="search.php" method="post">
                         <table colspan = 4 border-collapse = "collapse">
                             <td colspan = 1>
                                 <div class="dropdown">
@@ -112,7 +113,7 @@
                             <td colspan = 3>
                                 <label for="searchText">Search for posts here. Use single quotes for tags, commas to separate tags:</label><br><br><br>
                                 <input type="text" id="searchText" name="searchText"><br><br>
-                                <script>
+                                <!--<script>
                                     document.getElementById("searchText").addEventListener("keydown", function runSearch(e){if (e.keyCode == 13){
                                             console.log("Enter key is pressed");
                                             document.getElementById("searchEnterButton").click()
@@ -123,11 +124,13 @@
                                             ;
                                         }});
                                 </script>
+                            <button hidden id = "searchEnterButton" onclick="window.location.href='skeletonSearchPage.html';"></button>  
+                            -->
                             </td>
                         </table>
-                        
+                    </form>
                     
-                    <button hidden id = "searchEnterButton" onclick="window.location.href='skeletonSearchPage.html';"></button>                    
+                                      
                 </td>
                 <td colspan = 1 id = "bold">
                     <div class="dropdown">
