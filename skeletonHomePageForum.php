@@ -143,7 +143,7 @@
                         </div>
                     </div>
                 </td>
-                <td colspan="2" id="bold">
+                <td colspan = 2 id = "bold">
                     <div class="dropdown">
                         <button class="dropbtn">login</button>
                         <div class="dropdown-content-login">
@@ -153,7 +153,7 @@
                                 <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
                                 <label for="inputPassword">Password:</label><br>
                                 <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
-                                <button class="submittable" onclick="submitLogin(event)">Login</button>
+                                <button class = "submittable" onclick="submitLogin()">Login</button>
                                 <label>
                                     <input type="checkbox" checked="checked" name="remember"> Remember me
                                 </label>
@@ -168,66 +168,91 @@
                                     <option value="reg">Regular</option>
                                     <option value="mod">Moderator</option>
                                 </select><br><br>
-                                <button class="submittable" onclick="submitSignup(event)">Sign Up</button>
+                                <button class="submittable" onclick="submitSignup()">Sign Up</button>
                             </center>
-                        </div>
-                    </div>
-                </td>
 
-                <script>
-                    function submitLogin(event) {
-                        event.preventDefault(); // Prevent form submission
-                        // Retrieve the input data
-                        var username = document.getElementById("inputUsername").value;
-                        var password = document.getElementById("inputPassword").value;
+                            <script> // login
+                            <form action="login.php" method="POST">
+                            <td colspan="2" id="bold">
+                                <div class="dropdown">
+                                    <button class="dropbtn">login</button>
+                                    <div class="dropdown-content-login">
+                                        <center>
+                                            <br>
+                                            <label for="inputUsername">Username:</label><br>
+                                            <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br> 
+                                            <label for="inputPassword">Password:</label><br>
+                                            <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br> 
+                                            <button class="submittable" onclick="submitLogin(event)">Login</button>
+                                            <label>
+                                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                                            </label>
+                                            <div id="inputmsg"></div>
+                                            <br>
+                                            <label for="signupUsername">New Username:</label><br>
+                                            <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
+                                            <label for="signupPassword">New Password:</label><br>
+                                            <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
+                                            <label for="signupUserType">User Type:</label><br>
+                                            <select id="signupUserType" name="signupUserType" required>
+                                                <option value="reg">Regular</option>
+                                                <option value="mod">Moderator</option>
+                                            </select><br><br>
+                                            <button class="submittable" onclick="submitSignup(event)">Sign Up</button>
+                                        </center>
+                                    </div>
+                                </div>
+                            </td>
 
-                        // Store in Local Storage
-                        localStorage.setItem("username", username);
-                        localStorage.setItem("password", password);
+                            <script>
+                                function submitLogin() {
+                                    // Retrieve the input data
+                                    var username = document.getElementById("inputUsername").value;
+                                    var password = document.getElementById("inputPassword").value;
 
-                        // Set the values in the login form
-                        document.getElementById("loginUsername").value = username;
-                        document.getElementById("loginPassword").value = password;
+                                    // Store in Local Storage
+                                    localStorage.setItem("username", username);
+                                    localStorage.setItem("password", password);
 
-                        // Submit the login form
-                        document.getElementById("loginForm").submit();
-                    }
+                                    // Set the values in the login form
+                                    document.getElementById("loginUsername").value = username;
+                                    document.getElementById("loginPassword").value = password;
 
-                    function submitSignup(event) {
-                        event.preventDefault(); // Prevent form submission
-                        // Retrieve the input data
-                        var username = document.getElementById("signupUsername").value;
-                        var password = document.getElementById("signupPassword").value;
-                        var userType = document.getElementById("signupUserType").value;
+                                    // Submit the login form
+                                    document.getElementById("loginForm").submit();
+                                }
 
-                        // Store in Local Storage
-                        localStorage.setItem("username", username);
-                        localStorage.setItem("password", password);
+                                function submitSignup() {
+                                    // Retrieve the input data
+                                    var username = document.getElementById("signupUsername").value;
+                                    var password = document.getElementById("signupPassword").value;
+                                    var userType = document.getElementById("signupUserType").value;
 
-                        // Set the values in the signup form
-                        document.getElementById("signupUsernameInput").value = username;
-                        document.getElementById("signupPasswordInput").value = password;
-                        document.getElementById("signupUserTypeInput").value = userType;
+                                    // Store in Local Storage
+                                    localStorage.setItem("username", username);
+                                    localStorage.setItem("password", password);
 
-                        // Submit the signup form
-                        document.getElementById("signupForm").submit();
-                    }
-                </script>
+                                    // Set the values in the signup form
+                                    document.getElementById("signupUsernameInput").value = username;
+                                    document.getElementById("signupPasswordInput").value = password;
+                                    document.getElementById("signupUserTypeInput").value = userType;
 
-                <form id="loginForm" action="login.php" method="POST">
-                    <input type="hidden" name="inputUsername" id="loginUsername">
-                    <input type="hidden" name="inputPassword" id="loginPassword">
-                </form>
+                                    // Submit the signup form
+                                    document.getElementById("signupForm").submit();
+                                }
+                            </script>
 
-                <form id="signupForm" action="signup.php" method="POST">
-                    <input type="hidden" name="signupUsername" id="signupUsernameInput">
-                    <input type="hidden" name="signupPassword" id="signupPasswordInput">
-                    <input type="hidden" name="signupUserType" id="signupUserTypeInput">
-                </form>
+                            <form id="loginForm" action="login.php" method="POST">
+                                <input type="hidden" name="inputUsername" id="loginUsername">
+                                <input type="hidden" name="inputPassword" id="loginPassword">
+                            </form>
 
-                            
-                        </div>
-                    </div>
+                            <form id="signupForm" action="signup.php" method="POST">
+                                <input type="hidden" name="signupUsername" id="signupUsernameInput">
+                                <input type="hidden" name="signupPassword" id="signupPasswordInput">
+                                <input type="hidden" name="signupUserType" id="signupUserTypeInput">
+                            </form>
+
                 </td>
             </tr>
             <tr>
@@ -247,7 +272,7 @@
                 <td rowspan = 2 colspan = 2>right bar</td>
             </tr>
             <tr>
-                <!--left bar rowspan 3 colspan 2 gone-->
+                <!--left bar rowspan 3 colspan 2 gone-->c
                 <td rowspan = 1 colspan = 4>
                     <table class = "fitting">
                         <!--this is the table fitting all the other tables, 
@@ -263,7 +288,7 @@
                                         </td>
                                         <td colspan = 1>
                                             <input class = "invis" type="number" type = "hidden" id="upvoteNumber0" name="upvoteNumber0" value="<?=$upvotes0?>"><br>  
-                                        </td>
+                                        </td> 
                                         <td colspan = 2 onclick="window.location.href='skeletonPostPage.php?id=<?=$id0?>';">
                                             <?=$title0?>
                                         </td>
@@ -273,7 +298,7 @@
                                             <label for="postDescript0">
                                                 Post description:<br>
                                             </label><br>
-                                            <input class = "invis" type="text" id="postDescript0" name="postDescript0" value =<?=$content0?>><br> 
+                                            <input class = "invis" type="text" id="postDescript0" name="postDescript0" value=<?=$content0?>><br> 
                                         </td>
                                     </tr>
                                     <tr>
