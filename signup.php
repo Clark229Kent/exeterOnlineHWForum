@@ -9,18 +9,19 @@
         die('Connection failed');
     }
     
-    $username = $_POST["signupUsername"];
-    $password = $_POST["signupPassword"];
+    $signupUsername = $_POST["signupUsername"];
+    $signupPassword = $_POST["signupPassword"];
     $userType = $_POST["signupUserType"];
 
     $statement = mysqli_prepare($conn, "INSERT INTO logincreds (user_type, username, password) VALUES (?, ?, ?)");
-    mysqli_stmt_bind_param($statement, "sss", $userType, $username, $password);
+    mysqli_stmt_bind_param($statement, "sss", $userType, $signupUsername, $signupPassword);
     mysqli_stmt_execute($statement);
 
     if (mysqli_stmt_affected_rows($statement) > 0) {
         // Sign up successful
         session_start();
-        $_SESSION["username"] = $username;
+        $_SESSION["username"] = $signupUsername;
+        $response = null;
         if ($userType == "reg") {
             $response = array('userType' => 'regular');
         } else if ($userType == "mod") {
