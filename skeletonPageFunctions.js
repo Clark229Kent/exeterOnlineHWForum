@@ -1,13 +1,23 @@
 //just writing a shit ton of functions here
-function submitLogin(){
-    var username = document.getElementById("inputUsername").innerHTML;
-    var password = document.getElementById("inputPassword").innerHTML;
-    document.getElementById("inputUsername").innerHTML = "";
-    document.getElementById("inputPassword").innerHTML = "";
-    //if (username === )
-    //check if username is one in the database
-    //check if password corresponds to that username
+// skeletonPageFunctions.js
+
+function submitLogin() {
+    var username = document.getElementById("inputUsername").value;
+    var password = document.getElementById("inputPassword").value;
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    document.getElementById("loginForm").submit();
 }
+
+function submitSignup() {
+    var username = document.getElementById("signupUsername").value;
+    var password = document.getElementById("signupPassword").value;
+    var userType = document.getElementById("signupUserType").value;
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    document.getElementById("signupForm").submit();
+}
+
 
 function incrementVote(whichPost){
   //if we have time we can work on making upvotes only clickable once, not high on priorities though.
