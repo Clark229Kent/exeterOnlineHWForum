@@ -34,7 +34,7 @@ function addSearchTag(subject){
   document.getElementById("searchText").value = newSearchText;
 }
 
-function runSearch(e){if (e.keyCode == 13){
+/*function runSearch(e){if (e.keyCode == 13){
   console.log("Enter key is pressed");
   document.getElementById("searchEnterButton").click();
   //this updates the search results page what was searched
@@ -43,7 +43,7 @@ function runSearch(e){if (e.keyCode == 13){
   console.log( document.getElementById("actualSearchPrompt").value);
   //this resets the search textbox
   document.getElementById("searchText").value = "";
-}}
+}}*/
 
 function deletePostButton(whichPost){
 
@@ -91,7 +91,7 @@ function submitPost(){
 }
 
 
-function createSingleComment()
+function createSingleComment(num)
 {
   var table = document.getElementById("replyFormTable");
   table.style.display = "none";
@@ -103,7 +103,7 @@ function createSingleComment()
       let y=  x.insertCell(c);
       if (r == 1){
         y.id = "commentContentRow";
-        document.getElementById("commentContentRow").innerHTML = "comment text will go here"; //the comment text will go here
+        document.getElementById("commentContentRow").innerHTML = "<?=$comments["+num.string()+"]['content']?>"; //the comment text will go here
         document.getElementById("commentContentRow").colSpan = "4";
         break;
       }
@@ -114,7 +114,7 @@ function createSingleComment()
           y.innerHTML = "Resolved/Unresolved";
         }
         if (r == 2 && c == 0){
-          y.innerHTML = "upvote";
+          y.innerHTML = "<?=$comments["+num.string()+"]['score']?>";
         }
       }
     }
