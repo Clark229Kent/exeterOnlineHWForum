@@ -1,3 +1,12 @@
+<?php    session_start();
+    if (isset($_POST["logout"])) {
+    session_destroy(); // Destroy the session
+    header("Location: skeletonHomePageForum.php"); // Redirect to the login/sign-up form
+    exit();
+}
+
+
+?>
 <?php
     $servername = '127.0.0.1:3306';
     $username = 'root';
@@ -57,6 +66,8 @@
     $upvotes3 = $row3['score'];
     $conn->close();
 ?>
+
+                        
 <html>
     <head>
         <link rel="stylesheet" href="skeletonCSS.css">
@@ -143,90 +154,103 @@
                         </div>
                     </div>
                 </td>
-               <td colspan="2" id="bold">
+                <td colspan="2" id="bold">
                     <div class="dropdown">
                         <?php
-                        session_start();
-                        if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
-                            // if user is logged in
+                        if (isset($_SESSION["username"])) { // User is logged in
                             $username = $_SESSION["username"];
+                            $user_type = $_SESSION["user_type"];
                             echo '<button class="dropbtn">' . $username . '</button>';
+                            echo '<span>User type: ' . $user_type . '</span>';
+                            echo '<form method="post" action="">';
+                            echo '<input type="submit" name="logout" value="Logout">';
+                            echo '</form>';
                         } else {
                             // User is not logged in
                             echo '<button class="dropbtn">login</button>';
+                            echo '<div class="dropdown-content-login">';
+                            echo '<center>';
+                            echo '<br>';
+                            echo '<form id="loginForm" action="login.php" method="POST">';
+                            echo '<label for="inputUsername">Username:</label><br>';
+                            echo '<input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>';
+                            echo '<label for="inputPassword">Password:</label><br>';
+                            echo '<input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>';
+                            echo '<button class="submittable" type="submit" onclick="submitLogin(event)">Login</button>';
+                            echo '<label>';
+                            echo '<input type="checkbox" checked="checked" name="remember"> Remember me';
+                            echo '</label>';
+                            echo '<div id="inputmsg">';
+                            if (isset($errorMessage)) {
+                                echo $errorMessage;
+                            }
+                            echo '</div>';
+                            echo '</form>';
+                            echo '<br>';
+                            echo '<form id="signupForm" action="signup.php" method="POST">';
+                            echo '<label for="signupUsername">New Username:</label><br>';
+                            echo '<input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>';
+                            echo '<label for="signupPassword">New Password:</label><br>';
+                            echo '<input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>';
+                            echo '<label for="signupUserType">User Type:</label><br>';
+                            echo '<select id="signupUserType" name="signupUserType" required>';
+                            echo '<option value="reg">Regular</option>';
+                            echo '<option value="mod">Moderator</option>';
+                            echo '</select><br><br>';
+                            echo '<button class="submittable" type="submit" onclick="submitSignup(event)">Sign Up</button>';
+                            echo '</form>';
+                            echo '</center>';
+                            echo '</div>';
                         }
                         ?>
-                        <button class="dropbtn">login</button>
-                        <div class="dropdown-content-login">
-                            <center>
-                                <br>
-                                <form id="loginForm" action="login.php" method="POST">
-                                    <label for="inputUsername">Username:</label><br>
-                                    <input type="text" placeholder="Enter Username" name="inputUsername" id="inputUsername" required><br><br>
-                                    <label for="inputPassword">Password:</label><br>
-                                    <input type="password" placeholder="Enter Password" name="inputPassword" id="inputPassword" required><br><br>
-                                    <button class="submittable" type="submit" onclick="submitLogin(event)">Login</button>
-                                    <label>
-                                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                                    </label>
-                                    <div id="inputmsg"></div>
-                                </form>
-                                <br>
-                                <form id="signupForm" action="signup.php" method="POST">
-                                    <label for="signupUsername">New Username:</label><br>
-                                    <input type="text" placeholder="Enter New Username" name="signupUsername" id="signupUsername" required><br><br>
-                                    <label for="signupPassword">New Password:</label><br>
-                                    <input type="password" placeholder="Enter New Password" name="signupPassword" id="signupPassword" required><br><br>
-                                    <label for="signupUserType">User Type:</label><br>
-                                    <select id="signupUserType" name="signupUserType" required>
-                                        <option value="reg">Regular</option>
-                                        <option value="mod">Moderator</option>
-                                    </select><br><br>
-                                    <button class="submittable" type="submit" onclick="submitSignup(event)">Sign Up</button>
-                                </form>
-                            </center>
-                        </div>
                     </div>
                 </td>
 
+
                 <script>
                     function submitLogin(event) {
-                        event.preventDefault(); // Prevent form submission
-
+                        event.preventDefault();
+                        
                         // Retrieve the input data
                         var username = document.getElementById("inputUsername").value;
                         var password = document.getElementById("inputPassword").value;
 
-                        // Store in Local Storage
                         localStorage.setItem("username", username);
                         localStorage.setItem("password", password);
 
-                        // Set the values in the login form
                         document.getElementById("loginUsername").value = username;
                         document.getElementById("loginPassword").value = password;
 
-                        // Submit the login form
                         document.getElementById("loginForm").submit();
+                    }
+                    
+                    function handleLoginResponse(response) {
+                        if (response.errorMessage) {
+                            var errorDiv = document.getElementById("inputmsg");
+                        if (response.errorMessage) {
+                            // Display the error message in the dropdown ??? tbd
+                            errorDiv.textContent = response.errorMessage;
+                        } else {
+                            window.location.href = "skeletonHomePageForum.php";
+                        }
+                    }
                     }
 
                     function submitSignup(event) {
-                        event.preventDefault(); // Prevent form submission
-
+                        event.preventDefault();
+                        
                         // Retrieve the input data
                         var username = document.getElementById("signupUsername").value;
                         var password = document.getElementById("signupPassword").value;
                         var userType = document.getElementById("signupUserType").value;
 
-                        // Store in Local Storage
                         localStorage.setItem("username", username);
                         localStorage.setItem("password", password);
 
-                        // Set the values in the signup form
                         document.getElementById("signupUsernameInput").value = username;
                         document.getElementById("signupPasswordInput").value = password;
                         document.getElementById("signupUserTypeInput").value = userType;
 
-                        // Submit the signup form
                         document.getElementById("signupForm").submit();
                     }
                 </script>
@@ -241,7 +265,6 @@
                     <input type="hidden" name="signupPassword" id="signupPasswordInput">
                     <input type="hidden" name="signupUserType" id="signupUserTypeInput">
                 </form>
-
 
                 </td>
             </tr>
