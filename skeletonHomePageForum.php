@@ -170,8 +170,9 @@
                                 </select><br><br>
                                 <button class="submittable" onclick="submitSignup()">Sign Up</button>
                             </center>
-                            
+
                             <script> // login
+                            <form action="login.php" method="post">
                                 function submitLogin() {
                                   // Retrieve the input data
                                   var username = document.getElementById("inputUsername").value;
