@@ -152,16 +152,16 @@
                                         <td rowspan = 1 colspan = 1>
                                             <button onclick = "incrementVote(4)" > Upvote </button>
                                         </td>
-                                        <td rowspan = 1 colspan = 2><?=$row[0]['title']?></td>
+                                        <td rowspan = 1 colspan = 2 onclick="window.location.href='skeletonPostPage.php?id=<?=$row[0]['id']?>';"><?=$row[0]['title']?></td>
                                         <td rowspan = 1 colspan = 1><?=$row[0]['subj']?></td>
                                         <td rowspan = 1 colspan = 1><?=$row[0]['courseNum']?></td>
                                         <td rowspan = 2 colspan = 1># comments</td>
                                     </tr>
                                     <tr>
                                         <td rowspan = 1 colspan = 1>
-                                            <input class = "invis" type="number" type = "hidden" id="upvoteNumber4" name="upvoteNumber4" value="0"><br>
+                                            <input class = "invis" type="number" type = "hidden" id="upvoteNumber4" name="upvoteNumber4" value="<?=$row[0]['score']?>"><br>
                                         </td>
-                                        <td rowspan = 1 colspan = 4>short blurb with ellipse cutoff e.g. I was wondering about question 2 on the....</td>
+                                        <td rowspan = 1 colspan = 4><?=$row[0]['content']?></td>
                                     </tr>
                                 </table>
                             </td>
@@ -173,7 +173,7 @@
                                         <td rowspan = 1 colspan = 1>
                                             <button onclick = "incrementVote(5)" > Upvote </button>
                                         </td>
-                                        <td rowspan = 1 colspan = 2><?=$row[1]['title']?></td>
+                                        <td rowspan = 1 colspan = 2 onclick="window.location.href='skeletonPostPage.php?id=<?=$row[1]['id']?>';"><?=$row[1]['title']?></td>
                                         <td rowspan = 1 colspan = 1><?=$row[1]['subj']?></td>
                                         <td rowspan = 1 colspan = 1><?=$row[1]['courseNum']?></td>
                                         <td rowspan = 2 colspan = 1># comments</td>
