@@ -182,7 +182,7 @@
                                         <td rowspan = 1 colspan = 1>
                                             <input class = "invis" type="number" type = "hidden" id="upvoteNumber5" name="upvoteNumber5" value="0"><br>
                                         </td>
-                                        <td rowspan = 1 colspan = 4>short blurb with ellipse cutoff e.g. I was wondering about question 2 on the....</td>
+                                        <td rowspan = 1 colspan = 4><?=$row[1]['content']?></td>
                                     </tr>
                                 </table>
                             </td>
