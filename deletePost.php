@@ -18,4 +18,4 @@
       }
     $conn->close();
     header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonHomePageForum.php");
-?>
+    ?>
