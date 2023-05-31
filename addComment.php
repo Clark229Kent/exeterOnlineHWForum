@@ -21,6 +21,6 @@
     else{
         echo $conn->error;
     }
-    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/postPage.php?id=" . $id);
+    header("Location: http://localhost/exeterOnlineHWForum-main/exeterOnlineHWForum-main/skeletonPostPage.php?id=" . $id);
     $conn->close();
 ?>
