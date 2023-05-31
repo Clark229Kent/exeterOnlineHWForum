@@ -22,22 +22,22 @@
     $user = $row['userID'];
     $upvotes = $row['score'];
 
-    //comments
     $sql = "SELECT * FROM poststoragetable WHERE parent = '$id'";
-    for ($i=0;$i<mysqli_num_rows($result);$i++){
+    $result = $conn->query($sql);
+    $rows = mysqli_num_rows($result);
+    for ($i=0;$i<$rows;$i++){
         $comments[$i] = $result->fetch_assoc();
-        echo "<script>
-        createSingleComment('$i');
-        </script>";
     }
+    $commentsJSON = json_encode($comments);
     $conn->close();
 ?>
 <html>
     <head>
         <link rel="stylesheet" href="skeletonCSS.css">
         <script src="skeletonPageFunctions.js"></script>
+
     </head>
-<body>
+<body onload="createComments(int <?=$rows?>,str <?=$commentsJSON?>);">
     <div class = "scrollable" height = 800px>
         <table style = "width: 100%">
             <tr> 
@@ -186,8 +186,8 @@
             <tr></tr>
             <tr>
                 <td colspan = 4>
-                    <form action="addComment.php" method="post">
-                    <table id = "replyFormTable">
+                    <form action="addComment.php?id=<?=$_GET['id']?>" method="post">
+                    <table id = "replyFormTable" style="display:none">
                         <tr>
                             <td colspan = 4>
                                 <textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea>
@@ -207,7 +207,7 @@
             </tr>
             <tr>
                 <td colspan = 4>
-                    <table id = "postedRepliesTable"> </table>
+                        <table id = "postedRepliesTable"></table>
                 </td>
             </tr>
           </table>
