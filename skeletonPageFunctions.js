@@ -78,11 +78,10 @@ cn = window.prompt("Input number of columns",1);
 
 
 function createReplyForm(){
-  var table = document.getElementById("replyFormTable");
-  if (table.style.display === "none") {
-    table.style.display = "block";
+  if (document.getElementById("replyFormTable").style.display === "none") {
+    document.getElementById("replyFormTable").style.display = "block";
   } else {
-  table.style.display === "none"
+    document.getElementById("replyFormTable").style.display === "none"
   }
 }
 
@@ -91,19 +90,22 @@ function submitPost(){
 }
 
 
-function createSingleComment(num)
+function createComments(num, comments)
 {
+  //comments = JSON.parse(comments);
+  for(let i = 0;i<num;i++){
   var table = document.getElementById("replyFormTable");
   table.style.display = "none";
  for(let r=0;r<3;r++)
   {
-   var x=document.getElementById("postedRepliesTable").insertRow(r);
+   let x=document.getElementById("postedRepliesTable").insertRow(r); 
    for(let c=0;c<4;c++)  
     {
-      let y=  x.insertCell(c);
+      let y = x.insertCell(c);
+      alert("hi works" + num);
       if (r == 1){
         y.id = "commentContentRow";
-        document.getElementById("commentContentRow").innerHTML = "<?=$comments["+num.string()+"]['content']?>"; //the comment text will go here
+        document.getElementById("commentContentRow").innerHTML = comments[i].content; //the comment text will go here
         document.getElementById("commentContentRow").colSpan = "4";
         break;
       }
@@ -114,9 +116,14 @@ function createSingleComment(num)
           y.innerHTML = "Resolved/Unresolved";
         }
         if (r == 2 && c == 0){
-          y.innerHTML = "<?=$comments["+num.string()+"]['score']?>";
+          y.innerHTML = "hello";
         }
       }
     }
    }
+  }
+}
+
+function testing(num){
+  alert(num);
 }
