@@ -21,14 +21,23 @@
     $other = $row['otherTags'];
     $user = $row['userID'];
     $upvotes = $row['score'];
+
+    $sql = "SELECT * FROM poststoragetable WHERE parent = '$id'";
+    $result = $conn->query($sql);
+    $rows = mysqli_num_rows($result);
+    for ($i=0;$i<$rows;$i++){
+        $comments[$i] = $result->fetch_assoc();
+    }
+    $commentsJSON = json_encode($comments);
     $conn->close();
 ?>
 <html>
     <head>
         <link rel="stylesheet" href="skeletonCSS.css">
         <script src="skeletonPageFunctions.js"></script>
+
     </head>
-<body>
+<body onload="createComments(int <?=$rows?>,str <?=$commentsJSON?>);">
     <div class = "scrollable" height = 800px>
         <table style = "width: 100%">
             <tr> 
@@ -177,7 +186,8 @@
             <tr></tr>
             <tr>
                 <td colspan = 4>
-                    <table id = "replyFormTable">
+                    <form action="addComment.php?id=<?=$_GET['id']?>" method="post">
+                    <table id = "replyFormTable" style="display:none">
                         <tr>
                             <td colspan = 4>
                                 <textarea placeholder="What you are curious about:" id="replyContentText" name="replyContentText"></textarea>
@@ -185,18 +195,19 @@
                         </tr>
                         <tr>
                             <td colspan = 2>
-                                <button class = "submittable" id = "replySubmitButton" onclick = "createSingleComment()" > Submit </button>
+                                <input type = "submit" value = "Submit">
                             </td>
                             <td colspan = 2>
                                 empty
                             </td>
                         </tr>
                     </table>
+                    </form>
                 </td>
             </tr>
             <tr>
                 <td colspan = 4>
-                    <table id = "postedRepliesTable"> </table>
+                        <table id = "postedRepliesTable"></table>
                 </td>
             </tr>
           </table>
